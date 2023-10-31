@@ -28,7 +28,7 @@ app.post('/segitiga', (req, res) => {
         for (let j = 0; j < (i + 1); j++) {
             element = element+'0';
         }
-        response = response+EOL+element;
+        response = response+"<br>"+element;
     }
     res.send(`${response}`);
 });
@@ -41,7 +41,7 @@ app.post('/ganjil', (req, res) => {
     let response = '';
     for (let i = 0; i <= number; i++) {
         if((i % 2) == 0){
-            response = response+EOL+i;
+            response = response+"<br>"+i;
         }
     }
     res.send(`${response}`);
@@ -55,11 +55,11 @@ app.post('/prima', (req, res) => {
     let response = '';
     for (let i = 3; i <= number; i++) {
         if(i == 0 || i == 1 || i == 2){
-            response = response+EOL+i;
+            response = response+"<br>"+i;
         }
         else if((i % 2) != 0){
             if(bilanganPrima(i)){
-                response = response+EOL+i;
+                response = response+"<br>"+i;
             }
         }
     }
