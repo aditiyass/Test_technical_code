@@ -1,5 +1,6 @@
 import express from "express";
 import {EOL} from "os";
+import path from "path";
 
 const app = express();
 const port = 8000;
@@ -7,12 +8,12 @@ const port = 8000;
 app.use(express.json());
 
 // untuk test
-app.post('/', (req, res) => {
-    const number = req.body.number;
-    if(!Number.isInteger(number)){
-        res.send(`Invalid number`);
+app.get('/', (req, res) => {
+    const options = {
+        root : path.join("")
     }
-    res.send(`Number inputted is ${number}`);
+    res.sendFile("index.html",options);
+    // res.sendFile();
 });
 
 app.post('/segitiga', (req, res) => {

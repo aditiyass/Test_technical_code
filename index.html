@@ -1,0 +1,64 @@
+<html>
+    <head>
+        <script src="https://code.jquery.com/jquery-3.7.1.slim.min.js" crossorigin></script>
+    </head>
+    <body>
+        <input name="number" id="inputangka">
+        <button id="segitiga">Generate Segitiga</button>
+        <button id="ganjil">Generate Bilangan Ganjil</button>
+        <button id="prima">Generate Bilangan Prima</button>
+        <h3>Result:</h3>
+        <div id="result">
+
+        </div>
+    </body>
+    <script>
+        let baseurl = "http://localhost:8000";
+        $("#segitiga").on('click',()=>{
+            let zvalue = $("#inputangka").val();
+            zvalue = Number(zvalue);
+            let tosend = JSON.stringify({
+                "number" : zvalue,
+            });
+            let xmlhttp = new XMLHttpRequest();
+            xmlhttp.onreadystatechange = function(){
+                if(this.readyState == 4 && this.status == 200){
+                    $("#result").html(this.responseText);
+                }
+            }
+            xmlhttp.open('POST',baseurl+"/segitiga");
+            xmlhttp.send(tosend);
+            
+        });
+        $("#ganjil").on('click',()=>{
+            let zvalue = $("#inputangka").val();
+            zvalue = Number(zvalue);
+            let tosend = JSON.stringify({
+                "number" : zvalue,
+            });
+            let xmlhttp = new XMLHttpRequest();
+            xmlhttp.onreadystatechange = function(){
+                if(this.readyState == 4 && this.status == 200){
+                    $("#result").html(this.responseText);
+                }
+            }
+            xmlhttp.open('POST',baseurl+"/ganjil");
+            xmlhttp.send(tosend);
+        });
+        $("#prima").on('click',()=>{
+            let zvalue = $("#inputangka").val();
+            zvalue = Number(zvalue);
+            let tosend = JSON.stringify({
+                "number" : zvalue,
+            });
+            let xmlhttp = new XMLHttpRequest();
+            xmlhttp.onreadystatechange = function(){
+                if(this.readyState == 4 && this.status == 200){
+                    $("#result").html(this.responseText);
+                }
+            }
+            xmlhttp.open('POST',baseurl+"/prima");
+            xmlhttp.send(tosend);
+        });
+    </script>
+</html>
